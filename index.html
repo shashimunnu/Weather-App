@@ -11,6 +11,7 @@
             background: linear-gradient(to right, #4facfe, #00f2fe);
             color: white;
             padding: 20px;
+            transition: background 0.3s, color 0.3s;
         }
 
         .container {
@@ -61,14 +62,61 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background: linear-gradient(to right, #232526, #414345);
+            color: #f5f5f5;
+        }
+
+        .dark-mode .container {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .dark-mode button {
+            background-color: #ff5722;
+        }
+
+        .dark-mode button:hover {
+            background-color: #e64a19;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .toggle-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .toggle-btn:hover {
+            background: #555;
+        }
+
     </style>
 </head>
 <body>
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    
     <div class="container">
         <h2>Weather App</h2>
         <input type="text" id="city" placeholder="Enter city name">
         <button onclick="getWeather()">Get Weather</button>
         <div class="weather-info" id="weatherInfo"></div>
+    </div>
+
+    <div class="footer">
+        Developed by Shashi Bhushan [BCA Final Year]
     </div>
 
     <script>
@@ -97,6 +145,10 @@
                 .catch(() => {
                     document.getElementById("weatherInfo").innerHTML = `<p style="color: red;">Error fetching weather data</p>`;
                 });
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
         }
     </script>
 </body>
